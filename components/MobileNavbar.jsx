@@ -22,6 +22,10 @@ const links = [
     name: "projects",
     path: "/projects",
   },
+  {
+    name: "contact",
+    path: "/contact",
+  },
 ];
 
 const MobileNavbar = () => {
@@ -34,9 +38,27 @@ const MobileNavbar = () => {
       <SheetContent className="flex flex-col">
         <div className="mt-32 mb-40 text-center text-2xl">
           <Link href="/">
-            <span className="text-accent">m.</span>staali
+            <h1 className="text-4xl font-semibold">
+              <span className="text-accent">m.</span>staali
+            </h1>
           </Link>
         </div>
+        <nav className="flex flex-col justify-center items-center gap-8">
+          {links.map((link, index) => {
+            return (
+              <Link
+                href={link.path}
+                key={index}
+                className={`${
+                  link.path === pathName &&
+                  "text-accent border-b-2 border-accent"
+                } text-xl capitalize hover:text-accent transition-all`}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
+        </nav>
       </SheetContent>
     </Sheet>
   );
